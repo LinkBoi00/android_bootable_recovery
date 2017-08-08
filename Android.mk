@@ -202,6 +202,7 @@ ifeq ($(AB_OTA_UPDATER),true)
     LOCAL_CFLAGS += -DAB_OTA_UPDATER=1
     LOCAL_SHARED_LIBRARIES += libhardware android.hardware.boot@1.0
     TWRP_REQUIRED_MODULES += libhardware
+    TW_EXCLUDE_TWRPAPP := true
 endif
 
 LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)/sbin
@@ -430,6 +431,9 @@ ifneq ($(TW_INCLUDE_LIBRESETPROP),)
 endif
 ifeq ($(TW_EXCLUDE_NANO), true)
     LOCAL_CFLAGS += -DTW_EXCLUDE_NANO
+endif
+ifeq ($(TW_EXCLUDE_TWRPAPP),true)
+    LOCAL_CFLAGS += -DTW_EXCLUDE_TWRPAPP
 endif
 
 TWRP_REQUIRED_MODULES += \
